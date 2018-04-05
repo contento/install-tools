@@ -79,6 +79,10 @@ if (!(Test-Path -Path $newDir)) {
     New-Item -ItemType SymbolicLink -Path $newDir -Value c:\util 
 }
 
+# In case something fails and we miss the environment variables
+[Environment]::SetEnvironmentVariable("COMMANDER_PATH", "c:\tools\cmder", "Machine")
+[Environment]::SetEnvironmentVariable("CMDER_ROOT", "c:\tools\totalcmd", "Machine")
+
 InstallOrUpgradeChocolatey
 
 ForEach ($i in $apps) {
