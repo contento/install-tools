@@ -87,5 +87,5 @@ InstallOrUpgradeChocolatey
 
 ForEach ($i in $apps) {
     Write-Output "Installing $i ..."
-    choco install -y $i 2>&1 | Add-Content -Path $logFilename
+    choco install -y $i 2>&1 | Tee-Object -FilePath $logFilename -Append
 }
