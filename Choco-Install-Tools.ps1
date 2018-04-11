@@ -43,7 +43,8 @@ $apps = @(
     "vscode-icons",
     # VS Code: END
     "sysinternals",
-    "wintail"
+    "wintail",
+    "7zip"
 )
 
 #---------------------------------------------------------[Initializations]--------------------------------------------------------
