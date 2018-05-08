@@ -30,10 +30,16 @@ $apps = @(
     # VS Chocolatey: BEGIN
     "chocolatey",
     # VS Chocolatey: END
+    "rdtabs",
     "cmder",
+    "dependencywalker",
     "doublecmd",
+    "ilspy",
+    # "lightshot", # Broken!
+    "lockhunter",
     "notepad3",
     "notepadplusplus",
+    "rdtabs",
     "treesizefree",
     # VS Code: BEGIN
     "vscode",
@@ -42,6 +48,7 @@ $apps = @(
     "vscode-editorconfig",
     "vscode-icons",
     # VS Code: END
+    "reshack",
     "sysinternals",
     "wintail",
     "7zip"
