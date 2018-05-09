@@ -7,14 +7,10 @@ Set-StrictMode -Version 2
   Installs a bunch of tools using Chocolatey
 .DESCRIPTION
   Installs a bunch of tools using Chocolatey
-.PARAMETER SourceFilename
-  None
-.PARAMETER LogFilename
-  file containing the list of files to be installed/upgraded
 .INPUTS
   None
 .OUTPUTS
-  log file
+  log file (./logs/yyyy-mm-dd.log)
 .NOTES
   Version:        1.0
   Author:         Gonzalo Contento
@@ -35,6 +31,8 @@ $apps = @(
     "dependencywalker",
     "doublecmd",
     "ilspy",
+    "irfanview",
+    "irfanviewplugins", # TODO: confirm!
     # "lightshot", # Broken!
     "lockhunter",
     "notepad3",
@@ -57,7 +55,8 @@ $apps = @(
 #---------------------------------------------------------[Initializations]--------------------------------------------------------
 $ErrorActionPreference = "Stop"
 
-$logFilename = "$PSScriptRoot\Choco-Tools.$(Get-Date -f yyyy-MM-dd).log"
+$logsPath = "$PSScriptRoot\logs"
+$logFilename = "$logsPath\Choco-Install-Tools.$(Get-Date -f yyyy-MM-dd).log"
 
 #----------------------------------------------------------[Declarations]----------------------------------------------------------
 
@@ -67,7 +66,7 @@ function InstallOrUpgradeChocolatey() {
 
     $command = Get-Command choco
     if ($command) {
-        choco upgrade chocolatey
+        choco upgrade -y chocolatey
     }
     else {
         Set-ExecutionPolicy Bypass -Scope Process -Force
@@ -77,19 +76,24 @@ function InstallOrUpgradeChocolatey() {
 
 #-----------------------------------------------------------[Execution]------------------------------------------------------------
 
-$newDir = 'c:/util'
-if (!(Test-Path -Path $newDir)) {
-    New-Item -ItemType Directory -Path $newDir
+if (!(Test-Path -Path $logsPath)) {
+    New-Item -ItemType Directory -Path $logsPath
 }
 
-$newDir = 'c:/tools'
-if (!(Test-Path -Path $newDir)) {
-    New-Item -ItemType SymbolicLink -Path $newDir -Value c:\util 
+$toolsPath = 'c:/tools'
+if (!(Test-Path -Path $toolsPath)) {
+    New-Item -ItemType Directory -Path $toolsPath
+}
+
+$utilPath = 'c:/util'
+if (!(Test-Path -Path $utilPath)) {
+    New-Item -ItemType SymbolicLink -Path $utilPath -Value $toolsPath
 }
 
 # In case something fails and we miss the environment variables
-[Environment]::SetEnvironmentVariable("COMMANDER_PATH", "c:\tools\cmder", "Machine")
-[Environment]::SetEnvironmentVariable("CMDER_ROOT", "c:\tools\totalcmd", "Machine")
+[Environment]::SetEnvironmentVariable("TOOLS_PATH", "$toolsPath", "Machine")
+[Environment]::SetEnvironmentVariable("COMMANDER_PATH", "$toolsPath\totalcmd", "Machine")
+[Environment]::SetEnvironmentVariable("CMDER_ROOT", "$toolsPath\cmder", "Machine")
 
 InstallOrUpgradeChocolatey
 
