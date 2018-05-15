@@ -64,7 +64,13 @@ $logFilename = "$logsPath\Choco-Install-Tools.$(Get-Date -f yyyy-MM-dd).log"
 function InstallOrUpgradeChocolatey() {
     Write-Output "About to install/upgrade Chocolatey"
 
-    $command = Get-Command choco
+    $savedErrorActionPreference = $ErrorActionPreference
+    try {
+        $ErrorActionPreference = "SilentlyContinue"
+        $command = Get-Command choco
+    } finally {
+        $ErrorActionPreference = $savedErrorActionPreference  
+    }
     if ($command) {
         choco upgrade -y chocolatey
     }
