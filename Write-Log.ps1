@@ -78,8 +78,15 @@ function Write-Log {
         $line = $LogFormat -f (Get-Date), $Level.ToUpper(), $Message 
 
         if ($UseHost) {
-            Write-Host $line
-        }
+            $foreColor = switch ($level.ToUpper())
+            {
+                "ERROR" { "Red" }
+                "INFO" { "Green" }
+                "WARN" { "Yellow" }
+                "DEBUG" { "DarkGray" }
+            }
+            Write-Host $line -ForegroundColor $foreColor        
+		}
         
         if ($UseTee) {
             $line | Tee-Object -FilePath $Path -Append
