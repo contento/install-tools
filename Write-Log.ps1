@@ -62,11 +62,11 @@ function Write-Log {
         $Path = GetLogFilePath $Path 
         $logsPath = Split-Path -Path $Path 
         if (!(Test-Path -Path $logsPath)) {
-            New-Item -ItemType Directory -Path $logsPath
+            $item = New-Item -ItemType Directory -Path $logsPath
         }
     
         if (!(Test-Path $Path)) {
-            New-Item $Path -Force -ItemType File
+            $item = New-Item $Path -Force -ItemType File
         }
 
         if (!(Split-Path -IsAbsolute -Path $logsPath)) {
