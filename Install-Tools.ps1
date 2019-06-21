@@ -59,15 +59,20 @@ $chocoApps = @(
     "irfanview",
     "irfanviewplugins", # TODO: confirm!
     "jdk8", # Only for development !!!
-    # "lightshot", # Broken!
+     "lightshot",
     "lockhunter",
     "notepad3",
     "notepadplusplus",
     "rdtabs",
+    "reshack",
+    "sysinternals",
+    "slack",
+    "sourcetree",
+    "totalcommander",
     "tortoisegit",
     "treesizefree",
     # VS Code: BEGIN
-    #   https://chocolatey.org/packages?q=vscode
+    #  https://chocolatey.org/packages?q=vscode
     "vscode",
     "vscode-autofilename",
     "vscode-csharp",
@@ -77,8 +82,6 @@ $chocoApps = @(
     "vscode-icons",
     "vscode-tslint",
     # VS Code: END
-    "reshack",
-    "sysinternals",
     "wintail",
     "7zip"
 )
@@ -102,6 +105,12 @@ function Initialize-ToolsFolder {
     [Environment]::SetEnvironmentVariable("TOOLS_PATH", "$toolsPath", "Machine")
     [Environment]::SetEnvironmentVariable("COMMANDER_PATH", "$toolsPath\totalcmd", "Machine")
     [Environment]::SetEnvironmentVariable("CMDER_ROOT", "$toolsPath\cmder", "Machine")
+}
+
+function Initialize-SshCommand {
+  param (
+  )
+  git config --global core.sshCommand 'c:/Windows/System32/OpenSSH/ssh.exe' | Write-Log -UseHost -Path $LogFilePath
 }
 
 function Install-Chocolatey() {
@@ -174,6 +183,7 @@ function Main {
     }
 
     end {
+        Initialize-SshCommand
     }
 }
 
