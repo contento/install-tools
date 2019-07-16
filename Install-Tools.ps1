@@ -81,6 +81,7 @@ $chocoApps = @(
     "vscode-editorconfig",
     "vscode-icons",
     "vscode-tslint",
+    "vscode-yaml",
     # VS Code: END
     "wintail",
     "7zip"
