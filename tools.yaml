@@ -1,0 +1,46 @@
+powershell:
+  modules:
+  # https://www.powershellgallery.com
+  - PowerShellGet
+  - PSReadLine
+choco:
+  # https://chocolatey.org/packages
+  apps:
+  - chocolatey
+  - cmder
+  - dependencywalker
+  - doublecmd
+  - git
+  - ilspy
+  - irfanview
+  - irfanviewplugins # TODO: confirm!
+  # - jdk8 # Only for development !!!
+  - lightshot
+  - lockhunter
+  - notepad3
+  - notepadplusplus
+  - rdtabs
+  - reshack
+  - sysinternals
+  - slack
+  - sourcetree
+  - totalcommander
+  - tortoisegit
+  - treesizefree
+  - wintail
+  - 7zip"
+  vscode:
+  # https://chocolatey.org/packages?q=vscode
+  - vscode
+  - vscode-autofilename
+  - vscode-csharp
+  - vscode-docker
+  - vscode-powershell
+  - vscode-editorconfig
+  - vscode-icons
+  - vscode-tslint
+  - vscode-yaml
+commands:
+  - git config --global core.sshCommand 'c:/Windows/System32/OpenSSH/ssh.exe'
+toolPath: 'c:/tools'
+utilPath: 'c:/util'

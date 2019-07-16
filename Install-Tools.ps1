@@ -1,5 +1,5 @@
 #requires -version 5
-#Requires -RunAsAdministrator
+#requires -RunAsAdministrator
 
 <#
 .SYNOPSIS
@@ -21,6 +21,8 @@
 #>
 
 param (
+    [Parameter(Mandatory = $false, HelpMessage = "Path to YAML configuration file")]
+    [string]$ConfigurationFilePath,
     [Parameter(Mandatory = $false, HelpMessage = "Path to log file")]
     [string]$LogFilePath
 )
@@ -33,71 +35,29 @@ $ErrorActionPreference = "Stop"
 
 . "$PSScriptRoot/Write-Log.ps1"
 
+# Let us install the egg before the chicken ;-)
+Install-Module -Name "powershell-yaml" -ErrorAction SilentlyContinue
+
+Import-Module -Name "powershell-yaml"
+
 #----------------------------------------------------------[Declarations]----------------------------------------------------------
 
 if (!$LogFilePath) {
     $LogFilePath = "$PSScriptRoot/logs/$([System.IO.Path]::GetFileNameWithoutExtension($PSCommandPath)).{yyyy-MM-dd}.log"
 }
 
-$moduleNames = @(
-    # https://www.powershellgallery.com
-    "posh-git",
-    "PowerShellGet",
-    "Powershell-yaml",
-    "PSReadLine"
-)
-
-$chocoApps = @(
-    # VS Chocolatey: BEGIN
-    "chocolatey",
-    # VS Chocolatey: END
-    "cmder",
-    "dependencywalker",
-    "doublecmd",
-    "git",
-    "ilspy",
-    "irfanview",
-    "irfanviewplugins", # TODO: confirm!
-    "jdk8", # Only for development !!!
-     "lightshot",
-    "lockhunter",
-    "notepad3",
-    "notepadplusplus",
-    "rdtabs",
-    "reshack",
-    "sysinternals",
-    "slack",
-    "sourcetree",
-    "totalcommander",
-    "tortoisegit",
-    "treesizefree",
-    # VS Code: BEGIN
-    #  https://chocolatey.org/packages?q=vscode
-    "vscode",
-    "vscode-autofilename",
-    "vscode-csharp",
-    "vscode-docker",
-    "vscode-powershell",
-    "vscode-editorconfig",
-    "vscode-icons",
-    "vscode-tslint",
-    "vscode-yaml",
-    # VS Code: END
-    "wintail",
-    "7zip"
-)
-
 #-----------------------------------------------------------[Functions]------------------------------------------------------------
 
-function Initialize-ToolsFolder {
+function Initialize-ToolsFolder(
+    $Configuration) {
     "Initializing Tools Folder" | Write-Log -UseHost -Path $LogFilePath
 
-    $toolsPath = 'c:/tools'
+    $toolsPath = $Configuration.toolPath
     if (!(Test-Path -Path $toolsPath)) {
         New-Item -ItemType Directory -Path $toolsPath
     }
 
-    $utilPath = 'c:/util'
+    $utilPath = $Configuration.utilPath
     if (!(Test-Path -Path $utilPath)) {
         New-Item -ItemType SymbolicLink -Path $utilPath -Value $toolsPath
     }
@@ -108,23 +68,10 @@ function Initialize-ToolsFolder {
     [Environment]::SetEnvironmentVariable("CMDER_ROOT", "$toolsPath\cmder", "Machine")
 }
 
-function Initialize-SshCommand {
-  param (
-  )
-  git config --global core.sshCommand 'c:/Windows/System32/OpenSSH/ssh.exe' | Write-Log -UseHost -Path $LogFilePath
-}
-
 function Install-Chocolatey() {
     "Install/upgrading Chocolatey" | Write-Log -UseHost -Path $LogFilePath
 
-    $savedErrorActionPreference = $ErrorActionPreference
-    try {
-        $ErrorActionPreference = "SilentlyContinue"
-        $command = Get-Command choco
-    }
-    finally {
-        $ErrorActionPreference = $savedErrorActionPreference
-    }
+    $command = Get-Command choco -ErrorAction SilentlyContinue
     if ($command) {
         choco upgrade -y chocolatey 2>&1 | Write-Log -UseHost -Path $LogFilePath
     }
@@ -134,39 +81,51 @@ function Install-Chocolatey() {
     }
 }
 
-function Install-ChocoApps() {
+function Install-ChocoApps($ChocoApps) {
     "Install/upgrading Choco-Apps" | Write-Log -UseHost -Path $LogFilePath
-    ForEach ($appName in $chocoApps) {
+    ForEach ($appName in $ChocoApps) {
         $exists = choco list -lo | Where-object { $_.ToLower().StartsWith("$appName ".ToLower()) }
         if (!$exists) {
-          "Installing $appName ..." | Write-Log -UseHost -Path $LogFilePath
-          choco install -y $appName 2>&1 | Write-Log -Path $LogFilePath
+            "Installing $appName ..." | Write-Log -UseHost -Path $LogFilePath
+            choco install -y $appName 2>&1 | Write-Log -Path $LogFilePath
         }
         else {
-          "Upgrading $appName ..." | Write-Log -UseHost -Path $LogFilePath
-          choco upgrade -y $appName 2>&1 | Write-Log -Path $LogFilePath
+            "Upgrading $appName ..." | Write-Log -UseHost -Path $LogFilePath
+            choco upgrade -y $appName 2>&1 | Write-Log -Path $LogFilePath
         }
     }
 }
 
-function Install-PowerShellModules() {
+function Install-PowerShellModules($Modules) {
     "Installing PowerShell Modules" | Write-Log -UseHost -Path $LogFilePath
     # You may want to move this policy to a system script
     Install-PackageProvider -Name NuGet -Force
     Set-PSRepository -Name 'PSGallery' -InstallationPolicy Trusted
 
-    ForEach ($moduleName in $moduleNames) {
-        "Installing $moduleName ..." | Write-Log -UseHost -Path $LogFilePath
-
-        $module = Get-Module -ListAvailable | Where-Object { $_.Name -eq $moduleName }
-        if (!$module) {
-            Install-Module -Name $moduleName 2>&1 | Write-Log -Path $LogFilePath
-        }
-        else {
-            "Module $($module.Name) $($module.Version) was already installed" | Write-Log -UseHost -Level Warn -Path $LogFilePath
-        }
+    ForEach ($module in $Modules) {
+        "Installing $module ..." | Write-Log -UseHost -Path $LogFilePath
+        Install-Module -Name $module 2>&1 | Write-Log -Path $LogFilePath
     }
 }
+
+function Initialize-Command {
+    [CmdletBinding()]
+    param (
+        [Parameter(Mandatory = $true, ValueFromPipeline = $true)]
+        [string] $Command
+    )
+
+    begin {
+    }
+
+    process {
+        $Command | Write-Log -UseHost -Path $LogFilePath
+    }
+
+    end {
+    }
+}
+
 
 function Main {
     [CmdletBinding()]
@@ -174,17 +133,26 @@ function Main {
     )
 
     begin {
-        Initialize-ToolsFolder
+        if (!$ConfigurationFilePath) {
+            $ConfigurationFilePath = "$($PSScriptRoot)/tools.yaml"
+        }
+        $content = (Get-Content -Path $ConfigurationFilePath | Out-String)
+        $Configuration = ConvertFrom-Yaml -Yaml $content
     }
 
     process {
-        Install-PowerShellModules
+        Initialize-ToolsFolder $Configuration
+
+        Install-PowerShellModules -Modules $Configuration.powershell.modules
+
         Install-Chocolatey
-        Install-ChocoApps
+        Install-ChocoApps -ChocoApps $Configuration.choco.apps
+        Install-ChocoApps -ChocoApps $Configuration.choco.vscode
+
+        $Configuration.commands | Initialize-Command
     }
 
     end {
-        Initialize-SshCommand
     }
 }
 
@@ -197,6 +165,20 @@ try {
 
     $duration = Measure-Command { Main }
     "Done! $duration" | Write-Log -UseHost -Path $LogFilePath
+}
+catch {
+    $Exception = $_.Exception
+
+    if (!$LogFilePath) {
+        $LogFilePath = Get-DefaultLogFilePath
+    }
+
+    $Exception | Write-Log -UseHost -Path $LogFilePath -Level Error
+    if (!(Test-Path Variable:\LASTEXITCODE) -or $LASTEXITCODE -eq 0) {
+        # Force Error Code 1: Incorrect function. [ERROR_INVALID_FUNCTION (0x1)]
+        $LASTEXITCODE = 1
+        "Function-Generated Exit Code: $LASTEXITCODE" | Write-Log -UseHost -Path $LogFilePath -Level Error
+    }
 }
 finally {
     $DebugPreference = $savedDebugPreference
