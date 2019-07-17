@@ -1,7 +1,7 @@
 powershell:
   modules:
   # https://www.powershellgallery.com
-  - PowerShellGet
+  # powershell-yaml and PowerShellGet are hard-coded in the scrip
   - PSReadLine
 choco:
   # https://chocolatey.org/packages
