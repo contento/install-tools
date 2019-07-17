@@ -34,7 +34,7 @@ Set-StrictMode -Version 2
 $ErrorActionPreference = "Stop"
 
 # Let us install the egg before the chicken ;-)
-@("PowerShellGet", "powershell-yaml") | ForEach-Object {
+@("PackageManagement ", "PowerShellGet", "powershell-yaml") | ForEach-Object {
     $superModule = $_
     Write-Warning "Forcing installation of '$superModule' ..."
 
@@ -164,7 +164,7 @@ function Main {
         Initialize-ToolsFolder $Configuration
 
         Install-PowerShellModules -Modules $Configuration.powershell.modules -Force
-        
+
         Install-Chocolatey
         Install-ChocoApps -ChocoApps $Configuration.choco.apps
         Install-ChocoApps -ChocoApps $Configuration.choco.vscode
