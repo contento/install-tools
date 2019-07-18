@@ -33,12 +33,18 @@ Set-StrictMode -Version 2
 
 $ErrorActionPreference = "Stop"
 
-. "$PSScriptRoot/Write-Log.ps1"
-
 # Let us install the egg before the chicken ;-)
-Install-Module -Name "powershell-yaml" -ErrorAction SilentlyContinue
+@("PackageManagement ", "PowerShellGet", "powershell-yaml") | ForEach-Object {
+    $superModule = $_
+    Write-Warning "Forcing installation of '$superModule' ..."
+
+    Remove-Module -Name $superModule -Force -ErrorAction SilentlyContinue
+    Install-Module -Name $superModule -Force -AllowClobber -ErrorAction SilentlyContinue
+}
 
 Import-Module -Name "powershell-yaml"
+
+. "$PSScriptRoot/Write-Log.ps1"
 
 #----------------------------------------------------------[Declarations]----------------------------------------------------------
 
@@ -96,15 +102,29 @@ function Install-ChocoApps($ChocoApps) {
     }
 }
 
-function Install-PowerShellModules($Modules) {
-    "Installing PowerShell Modules" | Write-Log -UseHost -Path $LogFilePath
-    # You may want to move this policy to a system script
-    Install-PackageProvider -Name NuGet -Force
-    Set-PSRepository -Name 'PSGallery' -InstallationPolicy Trusted
+function Install-PowerShellModules {
+    [CmdletBinding()]
+    param (
+        $Modules,
+        [switch] $Force
+    )
 
-    ForEach ($module in $Modules) {
-        "Installing $module ..." | Write-Log -UseHost -Path $LogFilePath
-        Install-Module -Name $module 2>&1 | Write-Log -Path $LogFilePath
+    begin {
+    }
+
+    process {
+        "Installing PowerShell Modules" | Write-Log -UseHost -Path $LogFilePath
+        # You may want to move this policy to a system script
+        Install-PackageProvider -Name NuGet -Force
+        Set-PSRepository -Name 'PSGallery' -InstallationPolicy Trusted
+
+        ForEach ($module in $Modules) {
+            "Installing $module ..." | Write-Log -UseHost -Path $LogFilePath
+            Install-Module -Name $module -Force:$Force -AllowClobber 2>&1 | Write-Log -Path $LogFilePath
+        }
+    }
+
+    end {
     }
 }
 
@@ -143,7 +163,7 @@ function Main {
     process {
         Initialize-ToolsFolder $Configuration
 
-        Install-PowerShellModules -Modules $Configuration.powershell.modules
+        Install-PowerShellModules -Modules $Configuration.powershell.modules -Force
 
         Install-Chocolatey
         Install-ChocoApps -ChocoApps $Configuration.choco.apps

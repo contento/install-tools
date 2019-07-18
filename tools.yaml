@@ -1,8 +1,8 @@
 powershell:
   modules:
   # https://www.powershellgallery.com
-  - PowerShellGet # https://www.powershellgallery.com/packages/PowerShellGet
-  - PSReadLine # https://www.powershellgallery.com/packages/PSReadLine
+  # PowerShellGet, PackageManagement, and powershell-yaml are hard-coded in the script
+  - PSReadLine # https://www.powershellgallery.com/packages/PSReadLine/
 choco:
   # https://chocolatey.org/packages
   apps:
