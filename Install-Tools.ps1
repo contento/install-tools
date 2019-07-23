@@ -34,7 +34,7 @@ Set-StrictMode -Version 2
 $ErrorActionPreference = "Stop"
 
 # Let us install the egg before the chicken ;-)
-@("PackageManagement ", "PowerShellGet", "powershell-yaml") | ForEach-Object {
+@("PackageManagement", "PowerShellGet", "powershell-yaml") | ForEach-Object {
     $superModule = $_
     Write-Warning "Forcing installation of '$superModule' ..."
 
