@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<doublecmd DCVersion="0.8.4 beta" ConfigVersion="10">
+<doublecmd DCVersion="0.9.5 beta" ConfigVersion="10">
   <Toolbars>
     <MainToolbar>
       <Row>
@@ -111,6 +111,13 @@
         </Program>
         <Program>
           <ID>{701BB987-1DCB-4237-9E70-8C9629858025}</ID>
+          <Icon>%PROGRAMFILES%\PowerShell\6\pwsh.exe</Icon>
+          <Hint>PowerShell Core</Hint>
+          <Command>%PROGRAMFILES%\PowerShell\6\pwsh.exe</Command>
+          <Params>-WorkingDirectory %D</Params>
+        </Program>
+        <Program>
+          <ID>{8CC44BB9-914C-4420-A63D-9BE13A771BAB}</ID>
           <Icon>%WINDIR%\System32\WindowsPowerShell\v1.0\powershell.exe</Icon>
           <Hint>powershell</Hint>
           <Command>%WINDIR%\System32\WindowsPowerShell\v1.0\powershell.exe</Command>
@@ -133,7 +140,14 @@
         <Command>
           <ID>{3AA8F1CC-5A1D-4BD2-9BFB-981903661698}</ID>
           <Icon>%WINDIR%\System32\imageres.dll,117</Icon>
-          <Hint>App Data</Hint>
+          <Hint>User Profile</Hint>
+          <Command>cm_ChangeDir</Command>
+          <Param>%USERPROFILE%</Param>
+        </Command>
+        <Command>
+          <ID>{69E54217-BD20-42B0-9FAD-12FF4C1251B1}</ID>
+          <Icon>%WINDIR%\System32\imageres.dll,124</Icon>
+          <Hint>Roaming data</Hint>
           <Command>cm_ChangeDir</Command>
           <Param>%APPDATA%</Param>
         </Command>
@@ -163,24 +177,26 @@
     </MainToolbar>
   </Toolbars>
   <MainWindow>
-    <Position>
-      <Left>182</Left>
-      <Top>49</Top>
-      <Width>1528</Width>
-      <Height>1190</Height>
+    <Position Save="True">
+      <Left>1211</Left>
+      <Top>340</Top>
+      <Width>1120</Width>
+      <Height>892</Height>
       <PixelsPerInch>96</PixelsPerInch>
       <Maximized>False</Maximized>
       <Splitter>50</Splitter>
     </Position>
   </MainWindow>
-  <Configuration Save="True" SortOrder="0">
+  <Configuration Save="True" SortOrder="0" TreeType="0">
     <UseConfigInProgramDir>False</UseConfigInProgramDir>
+    <FolderTabs Save="True"/>
   </Configuration>
   <Language>
     <POFileName>doublecmd.en.po</POFileName>
   </Language>
   <Behaviours>
     <GoToRoot>False</GoToRoot>
+    <ActiveRight>False</ActiveRight>
     <RunInTerminalStayOpenCmd>cmd.exe</RunInTerminalStayOpenCmd>
     <RunInTerminalStayOpenParams>/K {command}</RunInTerminalStayOpenParams>
     <RunInTerminalCloseCmd>cmd.exe</RunInTerminalCloseCmd>
@@ -190,12 +206,22 @@
     <OnlyOneAppInstance>True</OnlyOneAppInstance>
     <LynxLike>True</LynxLike>
     <FileSizeFormat>0</FileSizeFormat>
+    <OperationSizeFormat>0</OperationSizeFormat>
+    <HeaderFooterSizeFormat>0</HeaderFooterSizeFormat>
     <FileSizeDigits>1</FileSizeDigits>
+    <HeaderFooterDigits>1</HeaderFooterDigits>
+    <OperationSizeDigits>1</OperationSizeDigits>
+    <PersonalizedByte>B</PersonalizedByte>
+    <PersonalizedKilo>KB</PersonalizedKilo>
+    <PersonalizedMega>MB</PersonalizedMega>
+    <PersonalizedGiga>GB</PersonalizedGiga>
+    <PersonalizedTera>TB</PersonalizedTera>
     <MinimizeToTray>False</MinimizeToTray>
     <AlwaysShowTrayIcon>False</AlwaysShowTrayIcon>
     <Mouse>
       <Selection Enabled="True">
         <Button>0</Button>
+        <IconClick>0</IconClick>
       </Selection>
       <SingleClickStart>0</SingleClickStart>
       <ScrollMode>1</ScrollMode>
@@ -328,10 +354,17 @@
       <BackColor>16777215</BackColor>
     </FreeSpaceIndicator>
     <FileFilters/>
+    <LogWindow>
+      <Info>8388608</Info>
+      <Error>255</Error>
+      <Success>32768</Success>
+    </LogWindow>
   </Colors>
   <ToolTips>
     <ShowToolTipMode>True</ShowToolTipMode>
     <CustomFields/>
+    <ActualToolTipMode>0</ActualToolTipMode>
+    <ToolTipHideTimeOut>0</ToolTipHideTimeOut>
   </ToolTips>
   <Layout>
     <MainMenu>True</MainMenu>
@@ -349,7 +382,7 @@
       <ShowFileSystem>True</ShowFileSystem>
       <ShowFreeSpace>True</ShowFreeSpace>
     </DrivesListButton>
-    <SeparateTree>True</SeparateTree>
+    <SeparateTree>False</SeparateTree>
     <DirectoryTabs>True</DirectoryTabs>
     <CurrentDirectory>True</CurrentDirectory>
     <TabHeader>True</TabHeader>
@@ -449,7 +482,7 @@
     <ActionOnDoubleClick>1</ActionOnDoubleClick>
     <OpenedTabs>
       <Left>
-        <ActiveTab>0</ActiveTab>
+        <ActiveTab>1</ActiveTab>
         <Tab>
           <FileView Type="columns">
             <History>
@@ -487,7 +520,60 @@
                   <Path Filename="cmder">%TOOLS_PATH%\</Path>
                   <Path Filename="Version v1.3.5">%TOOLS_PATH%\cmder\</Path>
                   <Path Filename="ScreenToGif 1.4.1.exe">%TOOLS_PATH%\</Path>
+                  <Path Filename="bz2.dll">C:\Program Files\Double Commander\</Path>
+                </Paths>
+              </Entry>
+            </History>
+            <ColumnsView>
+              <ColumnsSet>Default</ColumnsSet>
+            </ColumnsView>
+          </FileView>
+        </Tab>
+        <Tab>
+          <FileView Type="columns">
+            <History>
+              <Entry Active="True">
+                <FileSource Type="FileSystem"/>
+                <Paths>
+                  <Path Filename="doc">%PROGRAMFILES%\Double Commander\</Path>
+                  <Path Filename="..">%PROGRAMFILES%\Double Commander\doc\</Path>
+                  <Path Filename="highlighters">%PROGRAMFILES%\Double Commander\</Path>
+                  <Path Filename="..">%PROGRAMFILES%\Double Commander\highlighters\</Path>
+                  <Path Filename="..">%PROGRAMFILES%\Double Commander\</Path>
+                  <Path Filename="DVD Maker">%PROGRAMFILES%\</Path>
+                  <Path Filename="..">%PROGRAMFILES%\DVD Maker\</Path>
+                  <Path Filename="DVD Maker">%PROGRAMFILES%\</Path>
+                  <Path Filename="Temp">C:\</Path>
+                  <Path Filename="Dashboard">C:\Temp\</Path>
+                  <Path Filename="">C:\Temp\Dashboard\</Path>
+                  <Path Filename="..">C:\Temp\</Path>
+                  <Path Filename="Dev">C:\</Path>
+                  <Path Filename="MetraNetDev">C:\Dev\</Path>
+                  <Path Filename="Source">C:\Dev\MetraNetDev\</Path>
+                  <Path Filename="MetraTech">C:\Dev\MetraNetDev\Source\</Path>
+                  <Path Filename="..">C:\Dev\MetraNetDev\Source\MetraTech\</Path>
+                  <Path Filename="MetraTech">C:\Dev\MetraNetDev\Source\</Path>
+                  <Path Filename="Source">C:\Dev\MetraNetDev\</Path>
+                  <Path Filename="MetraNetDev">C:\Dev\</Path>
+                  <Path Filename="ProgramData">C:\</Path>
+                  <Path Filename="Chocolatey">C:\ProgramData\</Path>
+                  <Path Filename="logs">%ChocolateyInstall%\</Path>
+                  <Path Filename="..">%ChocolateyInstall%\logs\</Path>
+                  <Path Filename="lib">%ChocolateyInstall%\</Path>
+                  <Path Filename="doublecmd">%ChocolateyInstall%\lib\</Path>
+                  <Path Filename="..">%ChocolateyInstall%\lib\doublecmd\</Path>
+                  <Path Filename="tools">C:\</Path>
+                  <Path Filename="cmder">%TOOLS_PATH%\</Path>
+                  <Path Filename="Version v1.3.5">%TOOLS_PATH%\cmder\</Path>
+                  <Path Filename="ScreenToGif 1.4.1.exe">%TOOLS_PATH%\</Path>
+                  <Path Filename="bz2.dll">C:\Program Files\Double Commander\</Path>
+                  <Path Filename="Double Commander">C:\Program Files\</Path>
+                  <Path Filename="tools">C:\</Path>
+                  <Path Filename="..">C:\tools\</Path>
+                  <Path Filename="tools">C:\</Path>
+                  <Path Filename="Double Commander">C:\Program Files\</Path>
                   <Path Filename="..">C:\Program Files\Double Commander\</Path>
+                  <Path Filename="Google">C:\Program Files\</Path>
                 </Paths>
               </Entry>
             </History>
@@ -498,20 +584,13 @@
         </Tab>
       </Left>
       <Right>
-        <ActiveTab>1</ActiveTab>
+        <ActiveTab>0</ActiveTab>
         <Tab>
           <FileView Type="columns">
             <History>
               <Entry Active="True">
                 <FileSource Type="FileSystem"/>
                 <Paths>
-                  <Path Filename="Html">%TOOLS_PATH%\IrfanView\</Path>
-                  <Path Filename="IrfanView">%TOOLS_PATH%\</Path>
-                  <Path Filename="Program Files">C:\</Path>
-                  <Path Filename="DVD Maker">%PROGRAMFILES%\</Path>
-                  <Path Filename="ProgramData">C:\</Path>
-                  <Path Filename="Chocolatey">C:\ProgramData\</Path>
-                  <Path Filename="lib-bad">%ChocolateyInstall%\</Path>
                   <Path Filename="totalcmd">%ChocolateyInstall%\lib-bad\</Path>
                   <Path Filename="..">%ChocolateyInstall%\lib-bad\totalcmd\</Path>
                   <Path Filename="TotalCommander">%ChocolateyInstall%\lib-bad\</Path>
@@ -554,71 +633,14 @@
                   <Path Filename="..">%USERPROFILE%\Desktop\</Path>
                   <Path Filename="doublecmd">%APPDATA%\</Path>
                   <Path Filename="">%APPDATA%\doublecmd\</Path>
-                  <Path Filename="">C:\Program Files\Double Commander\</Path>
-                </Paths>
-              </Entry>
-            </History>
-            <ColumnsView>
-              <ColumnsSet>Default</ColumnsSet>
-            </ColumnsView>
-          </FileView>
-        </Tab>
-        <Tab>
-          <FileView Type="columns">
-            <History>
-              <Entry Active="True">
-                <FileSource Type="FileSystem"/>
-                <Paths>
-                  <Path Filename="Html">%TOOLS_PATH%\IrfanView\</Path>
-                  <Path Filename="IrfanView">%TOOLS_PATH%\</Path>
-                  <Path Filename="Program Files">C:\</Path>
-                  <Path Filename="DVD Maker">%PROGRAMFILES%\</Path>
-                  <Path Filename="ProgramData">C:\</Path>
-                  <Path Filename="Chocolatey">C:\ProgramData\</Path>
-                  <Path Filename="lib-bad">%ChocolateyInstall%\</Path>
-                  <Path Filename="totalcmd">%ChocolateyInstall%\lib-bad\</Path>
-                  <Path Filename="..">%ChocolateyInstall%\lib-bad\totalcmd\</Path>
-                  <Path Filename="TotalCommander">%ChocolateyInstall%\lib-bad\</Path>
-                  <Path Filename="..">%ChocolateyInstall%\lib-bad\TotalCommander\</Path>
-                  <Path Filename="TotalCommander">%ChocolateyInstall%\lib-bad\</Path>
-                  <Path Filename="lib">%ChocolateyInstall%\</Path>
-                  <Path Filename="SourceTree">%ChocolateyInstall%\lib\</Path>
-                  <Path Filename="lib-bkp">%ChocolateyInstall%\</Path>
-                  <Path Filename="..">%ChocolateyInstall%\lib-bkp\</Path>
-                  <Path Filename="logs">%ChocolateyInstall%\</Path>
-                  <Path Filename="chocolatey.log">%ChocolateyInstall%\logs\</Path>
-                  <Path Filename="lib">%ChocolateyInstall%\</Path>
-                  <Path Filename="jdk8">%ChocolateyInstall%\lib\</Path>
-                  <Path Filename="lib-bad">%ChocolateyInstall%\</Path>
-                  <Path Filename="TotalCommander">%ChocolateyInstall%\lib-bad\</Path>
-                  <Path Filename="tools">%ChocolateyInstall%\lib-bad\TotalCommander\</Path>
-                  <Path Filename="chocolateyUninstall.ahk">%ChocolateyInstall%\lib-bad\TotalCommander\tools\</Path>
-                  <Path Filename="..">%ChocolateyInstall%\lib-bad\</Path>
-                  <Path Filename="lib-bad">%ChocolateyInstall%\</Path>
-                  <Path Filename="Chocolatey">C:\ProgramData\</Path>
-                  <Path Filename="Temp">C:\</Path>
-                  <Path Filename="TotalCmd">C:\Temp\</Path>
-                  <Path Filename="..">C:\Temp\TotalCmd\</Path>
-                  <Path Filename="SharepointChekinCheckout.log">C:\Temp\</Path>
-                  <Path Filename="Roaming">%APPDATA%\</Path>
-                  <Path Filename="AppData">%USERPROFILE%\</Path>
-                  <Path Filename="ezcongo">C:\Users\</Path>
-                  <Path Filename="..">%APPDATA%\</Path>
-                  <Path Filename="..">%USERPROFILE%\</Path>
-                  <Path Filename="desktop.ini">C:\Users\Public\Documents\</Path>
-                  <Path Filename="..">%APPDATA%\</Path>
-                  <Path Filename="mdf-duality.RDP">%USERPROFILE%\Documents\</Path>
-                  <Path Filename="doublecmd">%APPDATA%\</Path>
-                  <Path Filename="shortcuts.scf">%APPDATA%\doublecmd\</Path>
-                  <Path Filename="tcmd912x64.exe">%USERPROFILE%\Downloads\</Path>
-                  <Path Filename="..">%USERPROFILE%\</Path>
-                  <Path Filename="ezcongo">C:\Users\</Path>
-                  <Path Filename="Self Service.lnk">%USERPROFILE%\Desktop\</Path>
-                  <Path Filename="Desktop">%USERPROFILE%\</Path>
-                  <Path Filename="..">%USERPROFILE%\Desktop\</Path>
-                  <Path Filename="doublecmd">%APPDATA%\</Path>
-                  <Path Filename="shortcuts.scf">%APPDATA%\doublecmd\</Path>
                   <Path Filename="..">C:\Program Files\Double Commander\</Path>
+                  <Path Filename="..">C:\Temp\</Path>
+                  <Path Filename="$GetCurrent">C:\</Path>
+                  <Path Filename="Logs">C:\$GetCurrent\</Path>
+                  <Path Filename="..">C:\$GetCurrent\Logs\</Path>
+                  <Path Filename="Logs">C:\$GetCurrent\</Path>
+                  <Path Filename="hiberfil.sys">C:\</Path>
+                  <Path Filename="..">C:\Temp\</Path>
                 </Paths>
               </Entry>
             </History>
@@ -693,6 +715,7 @@
       <Size>16</Size>
     </ShowInMenus>
     <ShowButtonGlyphs>0</ShowButtonGlyphs>
+    <ShowHiddenDimmed>False</ShowHiddenDimmed>
   </Icons>
   <IgnoreList Enabled="False">
     <IgnoreListFile>%DC_CONFIG_PATH%\ignorelist.txt</IgnoreListFile>
@@ -714,7 +737,7 @@
     <CopyMovePath3/>
     <CopyMovePath4/>
     <CopyMovePath5/>
-    <PaintMode>Pen</PaintMode>
+    <PaintMode>0</PaintMode>
     <PaintWidth>5</PaintWidth>
     <NumberOfColumns>1</NumberOfColumns>
     <ViewerMode>1</ViewerMode>
@@ -722,10 +745,13 @@
     <BackgroundColor>0</BackgroundColor>
     <FontColor>16777215</FontColor>
     <TextPosition>0</TextPosition>
+    <TabSpaces>8</TabSpaces>
+    <MaxTextWidth>1024</MaxTextWidth>
   </Viewer>
   <Editor>
     <EditWaitTime>2000</EditWaitTime>
     <SynEditOptions>856075</SynEditOptions>
+    <SynEditTabWidth>8</SynEditTabWidth>
   </Editor>
   <SyncDirs>
     <Subdirs>False</Subdirs>
@@ -738,6 +764,7 @@
     <FilterDuplicates>True</FilterDuplicates>
     <FilterSingles>True</FilterSingles>
     <FileMask>*</FileMask>
+    <Asymmetric Save="False">False</Asymmetric>
   </SyncDirs>
   <InternalAssociations>
     <OfferToAddNewFileType>False</OfferToAddNewFileType>
@@ -840,6 +867,7 @@
     <ColumnsSet UseFrameCursor="False">
       <Name>Default</Name>
       <CustomView>False</CustomView>
+      <FileSystem>&lt;General&gt;</FileSystem>
       <PixelsPerInch>96</PixelsPerInch>
       <CursorBorder Enabled="False">
         <Color>-2147483635</Color>
@@ -1162,5 +1190,19 @@
         <DetectString/>
       </WlxPlugin>
     </WlxPlugins>
+    <TweakPluginWidth0>0</TweakPluginWidth0>
+    <TweakPluginHeight0>0</TweakPluginHeight0>
+    <TweakPluginWidth1>0</TweakPluginWidth1>
+    <TweakPluginHeight1>0</TweakPluginHeight1>
+    <TweakPluginWidth2>0</TweakPluginWidth2>
+    <TweakPluginHeight2>0</TweakPluginHeight2>
+    <TweakPluginWidth3>0</TweakPluginWidth3>
+    <TweakPluginHeight3>0</TweakPluginHeight3>
+    <TweakPluginWidth4>0</TweakPluginWidth4>
+    <TweakPluginHeight4>0</TweakPluginHeight4>
+    <AutoTweak>False</AutoTweak>
+    <WCXConfigViewMode>0</WCXConfigViewMode>
+    <PluginFilenameStyle>0</PluginFilenameStyle>
+    <PluginPathToBeRelativeTo>%COMMANDER_PATH%</PluginPathToBeRelativeTo>
   </Plugins>
 </doublecmd>
