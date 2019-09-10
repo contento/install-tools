@@ -1,8 +1,12 @@
+toolPath: 'c:/tools'
+utilPath: 'c:/util'
+
 powershell:
   modules:
   # https://www.powershellgallery.com
   # PowerShellGet, PackageManagement, and powershell-yaml are hard-coded in the script
   - PSReadLine # https://www.powershellgallery.com/packages/PSReadLine/
+
 choco:
   # https://chocolatey.org/packages
   apps:
@@ -14,7 +18,7 @@ choco:
   - ilspy # https://github.com/icsharpcode/ILSpy
   - irfanview # https://www.irfanview.com/
   - irfanviewplugins # TODO: confirm! # https://www.irfanview.com/plugins.htm
-  # - jdk8 # Only for development !!! # https://www.oracle.com/technetwork/java/javase/downloads/
+  # - jdk8 # https://www.oracle.com/technetwork/java/javase/downloads/
   - lightshot # https://app.prntscr.com
   - lockhunter # https://lockhunter.com/
   - notepad3 # https://www.rizonesoft.com/introducing-notepad3/
@@ -27,6 +31,7 @@ choco:
   - totalcommander # https://www.ghisler.com/
   - tortoisegit # https://tortoisegit.org/
   - treesizefree # https://www.jam-software.com/treesize_free/
+  - typescript # https://www.typescriptlang.org/
   - wintail # http://www.baremetalsoft.com/wintail/
   - 7zip # https://www.7-zip.org/
   vscode: # https://code.visualstudio.com/
@@ -34,13 +39,10 @@ choco:
   - vscode
   - vscode-autofilename
   - vscode-csharp
-  - vscode-docker
+  #- vscode-docker
   - vscode-powershell
   - vscode-editorconfig
   - vscode-icons
-  - vscode-tslint
   - vscode-yaml
 commands:
   - git config --global core.sshCommand 'c:/Windows/System32/OpenSSH/ssh.exe'
-toolPath: 'c:/tools'
-utilPath: 'c:/util'

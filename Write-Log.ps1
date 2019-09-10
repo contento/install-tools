@@ -1,3 +1,5 @@
+#requires -version 5
+
 <#
 .SYNOPSIS
 Write Log Entry
@@ -37,9 +39,9 @@ Some ideas taken from:
 function Write-Log {
     [CmdletBinding()]
     param (
-        [Parameter(Mandatory = $false)] 
-        [string]$Path = "C:\logs\Log.{yyyy-MM-dd}.log",
-        [Parameter(Mandatory = $false)] 
+        [Parameter(Mandatory = $false)]
+        [string]$Path,
+        [Parameter(Mandatory = $false)]
         [string]$LogFormat = "{0:yyyy-MM-dd HH:mm:ss}|{1,-5}|{2}",
         [Parameter(Mandatory = $false, ValueFromPipeline = $true)] 
         [string]$Message, 
@@ -54,19 +56,23 @@ function Write-Log {
         [switch]$UseHost = $false
     )
     begin {
+        if (!$Path) {
+            $Path = Get-DefaultLogFilePath
+        }
+
         if ((Test-Path $Path) -AND $NoClobber) {
             Write-Error "File '$Path' already exists and you specified -NoClobber"
             return
         }
 
-        $Path = GetLogFilePath $Path 
+        $Path = Get-ActualLogFilePath $Path 
         $logsPath = Split-Path -Path $Path 
         if (!(Test-Path -Path $logsPath)) {
-            $item = New-Item -ItemType Directory -Path $logsPath
+            $null = New-Item -ItemType Directory -Path $logsPath
         }
     
         if (!(Test-Path $Path)) {
-            $item = New-Item $Path -Force -ItemType File
+            $null = New-Item $Path -Force -ItemType File
         }
 
         if (!(Split-Path -IsAbsolute -Path $logsPath)) {
@@ -78,15 +84,14 @@ function Write-Log {
         $line = $LogFormat -f (Get-Date), $Level.ToUpper(), $Message 
 
         if ($UseHost) {
-            $foreColor = switch ($level.ToUpper())
-            {
+            $foreColor = switch ($level.ToUpper()) {
                 "ERROR" { "Red" }
                 "INFO" { "Green" }
                 "WARN" { "Yellow" }
                 "DEBUG" { "DarkGray" }
             }
             Write-Host $line -ForegroundColor $foreColor        
-		}
+        }
         
         if ($UseTee) {
             $line | Tee-Object -FilePath $Path -Append
@@ -100,13 +105,25 @@ function Write-Log {
     }
 }
 
-function GetLogFilePath([string] $originalLogFilePath) {
-    $matching = $originalLogFilePath -match ".*{(.*)}.*"
+function Get-ActualLogFilePath {
+    param (
+        [Parameter(Mandatory = $true)] 
+        [string] $OriginalLogFilePath 
+    )
+    $matching = $OriginalLogFilePath -match ".*{(.*)}.*"
     if (!$matching) {
-        return $originalLogFilePath
+        return $OriginalLogFilePath
     } 
 
     $format = $Matches[1]
-    $path = $originalLogFilePath -replace "{.*}", "$(Get-Date -f $format)"
-    return $path
+    $path = $OriginalLogFilePath -replace "{.*}", "$(Get-Date -f $format)"
+    $path
+}
+
+function Get-DefaultLogFilePath {
+    param (
+    )
+    $filenameWithoutExtension = $([System.IO.Path]::GetFileNameWithoutExtension($PSCommandPath))
+    $LogFilePath = "$($MyInvocation.PSScriptRoot)/logs/$filenameWithoutExtension.{yyyy-MM-dd}.log"
+    $LogFilePath
 }
