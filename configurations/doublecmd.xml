@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<doublecmd DCVersion="0.9.5 beta" ConfigVersion="10">
+<doublecmd DCVersion="0.9.6 beta" ConfigVersion="10">
   <Toolbars>
     <MainToolbar>
       <Row>
@@ -474,6 +474,9 @@
       <CopyPermissions>False</CopyPermissions>
       <ExcludeEmptyTemplateDirectories>True</ExcludeEmptyTemplateDirectories>
     </Options>
+    <Extract>
+      <Overwrite>False</Overwrite>
+    </Extract>
   </FileOperations>
   <Tabs>
     <Options>49937</Options>
@@ -520,7 +523,7 @@
                   <Path Filename="cmder">%TOOLS_PATH%\</Path>
                   <Path Filename="Version v1.3.5">%TOOLS_PATH%\cmder\</Path>
                   <Path Filename="ScreenToGif 1.4.1.exe">%TOOLS_PATH%\</Path>
-                  <Path Filename="bz2.dll">C:\Program Files\Double Commander\</Path>
+                  <Path Filename="">C:\Program Files\Double Commander\</Path>
                 </Paths>
               </Entry>
             </History>
@@ -591,9 +594,6 @@
               <Entry Active="True">
                 <FileSource Type="FileSystem"/>
                 <Paths>
-                  <Path Filename="totalcmd">%ChocolateyInstall%\lib-bad\</Path>
-                  <Path Filename="..">%ChocolateyInstall%\lib-bad\totalcmd\</Path>
-                  <Path Filename="TotalCommander">%ChocolateyInstall%\lib-bad\</Path>
                   <Path Filename="..">%ChocolateyInstall%\lib-bad\TotalCommander\</Path>
                   <Path Filename="TotalCommander">%ChocolateyInstall%\lib-bad\</Path>
                   <Path Filename="lib">%ChocolateyInstall%\</Path>
@@ -641,6 +641,9 @@
                   <Path Filename="Logs">C:\$GetCurrent\</Path>
                   <Path Filename="hiberfil.sys">C:\</Path>
                   <Path Filename="..">C:\Temp\</Path>
+                  <Path Filename="..">C:\Users\conte\AppData\Roaming\</Path>
+                  <Path Filename=".config">C:\Users\conte\</Path>
+                  <Path Filename="..">C:\Temp\</Path>
                 </Paths>
               </Entry>
             </History>
@@ -685,6 +688,7 @@
     <ShowPathInPopup>False</ShowPathInPopup>
     <ShowOnlyValidEnv>True</ShowOnlyValidEnv>
     <WhereToAddNewHotDir>2</WhereToAddNewHotDir>
+    <InplaceRenameButton>False</InplaceRenameButton>
   </Miscellaneous>
   <Thumbnails Save="True">
     <Width>128</Width>
@@ -721,9 +725,11 @@
     <IgnoreListFile>%DC_CONFIG_PATH%\ignorelist.txt</IgnoreListFile>
   </IgnoreList>
   <DirectoryHotList>
+    <HotDir Name="backup" Path="C:\backup\"/>
     <HotDir Name="Program Files" Path="%PROGRAMFILES%"/>
     <HotDir Name="Temp" Path="C:\Temp"/>
     <HotDir Name="Downloads" Path="%USERPROFILE%\Downloads"/>
+    <HotDir Name="Windows" Path="C:\Windows\"/>
     <HotDir Name="Util" Path="%TOOLS_PATH%"/>
   </DirectoryHotList>
   <Viewer>
