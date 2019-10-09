@@ -23,6 +23,7 @@ $ErrorActionPreference = "Stop"
 
 [string] $configurationsPath = "$PSScriptRoot/configurations"
 
+# TODO: use tools.yaml
 $configurations = @(
     , ("doublecmd.xml", "$env:APPDATA/DoubleCmd")
     , ("shortcuts.scf", "$env:APPDATA/DoubleCmd")
