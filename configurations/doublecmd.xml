@@ -492,38 +492,6 @@
               <Entry Active="True">
                 <FileSource Type="FileSystem"/>
                 <Paths>
-                  <Path Filename="doc">%PROGRAMFILES%\Double Commander\</Path>
-                  <Path Filename="..">%PROGRAMFILES%\Double Commander\doc\</Path>
-                  <Path Filename="highlighters">%PROGRAMFILES%\Double Commander\</Path>
-                  <Path Filename="..">%PROGRAMFILES%\Double Commander\highlighters\</Path>
-                  <Path Filename="..">%PROGRAMFILES%\Double Commander\</Path>
-                  <Path Filename="DVD Maker">%PROGRAMFILES%\</Path>
-                  <Path Filename="..">%PROGRAMFILES%\DVD Maker\</Path>
-                  <Path Filename="DVD Maker">%PROGRAMFILES%\</Path>
-                  <Path Filename="Temp">C:\</Path>
-                  <Path Filename="Dashboard">C:\Temp\</Path>
-                  <Path Filename="">C:\Temp\Dashboard\</Path>
-                  <Path Filename="..">C:\Temp\</Path>
-                  <Path Filename="Dev">C:\</Path>
-                  <Path Filename="MetraNetDev">C:\Dev\</Path>
-                  <Path Filename="Source">C:\Dev\MetraNetDev\</Path>
-                  <Path Filename="MetraTech">C:\Dev\MetraNetDev\Source\</Path>
-                  <Path Filename="..">C:\Dev\MetraNetDev\Source\MetraTech\</Path>
-                  <Path Filename="MetraTech">C:\Dev\MetraNetDev\Source\</Path>
-                  <Path Filename="Source">C:\Dev\MetraNetDev\</Path>
-                  <Path Filename="MetraNetDev">C:\Dev\</Path>
-                  <Path Filename="ProgramData">C:\</Path>
-                  <Path Filename="Chocolatey">C:\ProgramData\</Path>
-                  <Path Filename="logs">%ChocolateyInstall%\</Path>
-                  <Path Filename="..">%ChocolateyInstall%\logs\</Path>
-                  <Path Filename="lib">%ChocolateyInstall%\</Path>
-                  <Path Filename="doublecmd">%ChocolateyInstall%\lib\</Path>
-                  <Path Filename="..">%ChocolateyInstall%\lib\doublecmd\</Path>
-                  <Path Filename="tools">C:\</Path>
-                  <Path Filename="cmder">%TOOLS_PATH%\</Path>
-                  <Path Filename="Version v1.3.5">%TOOLS_PATH%\cmder\</Path>
-                  <Path Filename="ScreenToGif 1.4.1.exe">%TOOLS_PATH%\</Path>
-                  <Path Filename="">C:\Program Files\Double Commander\</Path>
                 </Paths>
               </Entry>
             </History>
@@ -538,45 +506,6 @@
               <Entry Active="True">
                 <FileSource Type="FileSystem"/>
                 <Paths>
-                  <Path Filename="doc">%PROGRAMFILES%\Double Commander\</Path>
-                  <Path Filename="..">%PROGRAMFILES%\Double Commander\doc\</Path>
-                  <Path Filename="highlighters">%PROGRAMFILES%\Double Commander\</Path>
-                  <Path Filename="..">%PROGRAMFILES%\Double Commander\highlighters\</Path>
-                  <Path Filename="..">%PROGRAMFILES%\Double Commander\</Path>
-                  <Path Filename="DVD Maker">%PROGRAMFILES%\</Path>
-                  <Path Filename="..">%PROGRAMFILES%\DVD Maker\</Path>
-                  <Path Filename="DVD Maker">%PROGRAMFILES%\</Path>
-                  <Path Filename="Temp">C:\</Path>
-                  <Path Filename="Dashboard">C:\Temp\</Path>
-                  <Path Filename="">C:\Temp\Dashboard\</Path>
-                  <Path Filename="..">C:\Temp\</Path>
-                  <Path Filename="Dev">C:\</Path>
-                  <Path Filename="MetraNetDev">C:\Dev\</Path>
-                  <Path Filename="Source">C:\Dev\MetraNetDev\</Path>
-                  <Path Filename="MetraTech">C:\Dev\MetraNetDev\Source\</Path>
-                  <Path Filename="..">C:\Dev\MetraNetDev\Source\MetraTech\</Path>
-                  <Path Filename="MetraTech">C:\Dev\MetraNetDev\Source\</Path>
-                  <Path Filename="Source">C:\Dev\MetraNetDev\</Path>
-                  <Path Filename="MetraNetDev">C:\Dev\</Path>
-                  <Path Filename="ProgramData">C:\</Path>
-                  <Path Filename="Chocolatey">C:\ProgramData\</Path>
-                  <Path Filename="logs">%ChocolateyInstall%\</Path>
-                  <Path Filename="..">%ChocolateyInstall%\logs\</Path>
-                  <Path Filename="lib">%ChocolateyInstall%\</Path>
-                  <Path Filename="doublecmd">%ChocolateyInstall%\lib\</Path>
-                  <Path Filename="..">%ChocolateyInstall%\lib\doublecmd\</Path>
-                  <Path Filename="tools">C:\</Path>
-                  <Path Filename="cmder">%TOOLS_PATH%\</Path>
-                  <Path Filename="Version v1.3.5">%TOOLS_PATH%\cmder\</Path>
-                  <Path Filename="ScreenToGif 1.4.1.exe">%TOOLS_PATH%\</Path>
-                  <Path Filename="bz2.dll">C:\Program Files\Double Commander\</Path>
-                  <Path Filename="Double Commander">C:\Program Files\</Path>
-                  <Path Filename="tools">C:\</Path>
-                  <Path Filename="..">C:\tools\</Path>
-                  <Path Filename="tools">C:\</Path>
-                  <Path Filename="Double Commander">C:\Program Files\</Path>
-                  <Path Filename="..">C:\Program Files\Double Commander\</Path>
-                  <Path Filename="Google">C:\Program Files\</Path>
                 </Paths>
               </Entry>
             </History>
@@ -591,59 +520,10 @@
         <Tab>
           <FileView Type="columns">
             <History>
+            <History>
               <Entry Active="True">
                 <FileSource Type="FileSystem"/>
                 <Paths>
-                  <Path Filename="..">%ChocolateyInstall%\lib-bad\TotalCommander\</Path>
-                  <Path Filename="TotalCommander">%ChocolateyInstall%\lib-bad\</Path>
-                  <Path Filename="lib">%ChocolateyInstall%\</Path>
-                  <Path Filename="SourceTree">%ChocolateyInstall%\lib\</Path>
-                  <Path Filename="lib-bkp">%ChocolateyInstall%\</Path>
-                  <Path Filename="..">%ChocolateyInstall%\lib-bkp\</Path>
-                  <Path Filename="logs">%ChocolateyInstall%\</Path>
-                  <Path Filename="chocolatey.log">%ChocolateyInstall%\logs\</Path>
-                  <Path Filename="lib">%ChocolateyInstall%\</Path>
-                  <Path Filename="jdk8">%ChocolateyInstall%\lib\</Path>
-                  <Path Filename="lib-bad">%ChocolateyInstall%\</Path>
-                  <Path Filename="TotalCommander">%ChocolateyInstall%\lib-bad\</Path>
-                  <Path Filename="tools">%ChocolateyInstall%\lib-bad\TotalCommander\</Path>
-                  <Path Filename="chocolateyUninstall.ahk">%ChocolateyInstall%\lib-bad\TotalCommander\tools\</Path>
-                  <Path Filename="..">%ChocolateyInstall%\lib-bad\</Path>
-                  <Path Filename="lib-bad">%ChocolateyInstall%\</Path>
-                  <Path Filename="Chocolatey">C:\ProgramData\</Path>
-                  <Path Filename="Temp">C:\</Path>
-                  <Path Filename="TotalCmd">C:\Temp\</Path>
-                  <Path Filename="..">C:\Temp\TotalCmd\</Path>
-                  <Path Filename="SharepointChekinCheckout.log">C:\Temp\</Path>
-                  <Path Filename="Roaming">%APPDATA%\</Path>
-                  <Path Filename="AppData">%USERPROFILE%\</Path>
-                  <Path Filename="ezcongo">C:\Users\</Path>
-                  <Path Filename="..">%APPDATA%\</Path>
-                  <Path Filename="..">%USERPROFILE%\</Path>
-                  <Path Filename="desktop.ini">C:\Users\Public\Documents\</Path>
-                  <Path Filename="..">%APPDATA%\</Path>
-                  <Path Filename="mdf-duality.RDP">%USERPROFILE%\Documents\</Path>
-                  <Path Filename="doublecmd">%APPDATA%\</Path>
-                  <Path Filename="shortcuts.scf">%APPDATA%\doublecmd\</Path>
-                  <Path Filename="tcmd912x64.exe">%USERPROFILE%\Downloads\</Path>
-                  <Path Filename="..">%USERPROFILE%\</Path>
-                  <Path Filename="ezcongo">C:\Users\</Path>
-                  <Path Filename="Self Service.lnk">%USERPROFILE%\Desktop\</Path>
-                  <Path Filename="Desktop">%USERPROFILE%\</Path>
-                  <Path Filename="..">%USERPROFILE%\Desktop\</Path>
-                  <Path Filename="doublecmd">%APPDATA%\</Path>
-                  <Path Filename="">%APPDATA%\doublecmd\</Path>
-                  <Path Filename="..">C:\Program Files\Double Commander\</Path>
-                  <Path Filename="..">C:\Temp\</Path>
-                  <Path Filename="$GetCurrent">C:\</Path>
-                  <Path Filename="Logs">C:\$GetCurrent\</Path>
-                  <Path Filename="..">C:\$GetCurrent\Logs\</Path>
-                  <Path Filename="Logs">C:\$GetCurrent\</Path>
-                  <Path Filename="hiberfil.sys">C:\</Path>
-                  <Path Filename="..">C:\Temp\</Path>
-                  <Path Filename="..">C:\Users\conte\AppData\Roaming\</Path>
-                  <Path Filename=".config">C:\Users\conte\</Path>
-                  <Path Filename="..">C:\Temp\</Path>
                 </Paths>
               </Entry>
             </History>
