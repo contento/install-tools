@@ -25,6 +25,7 @@ $ErrorActionPreference = "Stop"
 
 $configurations = @(
     , ("doublecmd.xml", "$env:APPDATA/DoubleCmd")
+    , ("shortcuts.scf", "$env:APPDATA/DoubleCmd")
 )
 
 foreach ($configuration in $configurations) {
