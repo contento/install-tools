@@ -11,3 +11,7 @@ Just run:
     ./Install-Tools.ps1
 
 > 👉 Relies heavily on [Chocolatey](https://chocolatey.org)
+
+## TODO
+
+- [ ] Add more configurations
