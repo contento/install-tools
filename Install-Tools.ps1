@@ -115,7 +115,6 @@ function Install-PowerShellModules {
     process {
         "Installing PowerShell Modules" | Write-Log -UseHost -Path $LogFilePath
         # You may want to move this policy to a system script
-        Install-PackageProvider -Name NuGet -Force
         Set-PSRepository -Name 'PSGallery' -InstallationPolicy Trusted
 
         ForEach ($module in $Modules) {
