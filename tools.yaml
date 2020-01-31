@@ -14,6 +14,7 @@ choco:
   - cmder # https://cmder.net/
   - dependencywalker # http://www.dependencywalker.com/
   - doublecmd # https://sourceforge.net/projects/doublecmd/
+  - filezilla # https://filezilla-project.org/
   - git # https://git-scm.com/
   - ilspy # https://github.com/icsharpcode/ILSpy
   - irfanview # https://www.irfanview.com/
