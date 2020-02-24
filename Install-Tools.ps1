@@ -110,12 +110,13 @@ function Install-PowerShellModules {
     )
 
     begin {
+        # You may want to move this policy to a system script
+        "Setting Repository PSGallery" | Write-Log -UseHost -Path $LogFilePath
+        Set-PSRepository -Name 'PSGallery' -InstallationPolicy Trusted
     }
 
     process {
         "Installing PowerShell Modules" | Write-Log -UseHost -Path $LogFilePath
-        # You may want to move this policy to a system script
-        Set-PSRepository -Name 'PSGallery' -InstallationPolicy Trusted
 
         ForEach ($module in $Modules) {
             "Installing $module ..." | Write-Log -UseHost -Path $LogFilePath
