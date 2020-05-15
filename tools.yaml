@@ -21,6 +21,7 @@ choco:
     - doublecmd # https://sourceforge.net/projects/doublecmd/
     - microsoft-edge # https://www.microsoft.com/en-us/edge
     - microsoftazurestorageexplorer # previously azurestorageexplorer
+    - microsoft-teams
     - microsoft-windows-terminal # https://github.com/Microsoft/Terminal
     - filezilla # https://filezilla-project.org/
     - firefox # https://www.mozilla.org/en-US/firefox/new/
@@ -38,7 +39,7 @@ choco:
     # - rdtabs # https://www.avianwaves.com/Software/Tools/RD-Tabs
     - reshack # http://www.angusj.com/resourcehacker/
     - sysinternals # https://docs.microsoft.com/en-us/sysinternals/
-    # - slack # https://slack.com/
+    - slack # https://slack.com/
     # - sourcetree # https://www.sourcetreeapp.com/
     - totalcommander # https://www.ghisler.com/
     - tortoisegit # https://tortoisegit.org/
