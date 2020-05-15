@@ -1,51 +1,64 @@
-toolPath: 'c:/tools'
-utilPath: 'c:/util'
+toolPath: "c:/tools"
+utilPath: "c:/util"
 
 powershell:
   modules:
-  # https://www.powershellgallery.com
-  # PowerShellGet, PackageManagement, and powershell-yaml are hard-coded in the script
-  - PSReadLine # https://www.powershellgallery.com/packages/PSReadLine/
+    # https://www.powershellgallery.com
+    # PowerShellGet, PackageManagement, and powershell-yaml are hard-coded in the script
+    - PSReadLine # https://www.powershellgallery.com/packages/PSReadLine/
 
 choco:
   # https://chocolatey.org/packages
   apps:
-  - chocolatey # https://chocolatey.org/
-  - cmder # https://cmder.net/
-  - dependencywalker # http://www.dependencywalker.com/
-  - doublecmd # https://sourceforge.net/projects/doublecmd/
-  - filezilla # https://filezilla-project.org/
-  - git # https://git-scm.com/
-  - ilspy # https://github.com/icsharpcode/ILSpy
-  - irfanview # https://www.irfanview.com/
-  - irfanviewplugins # TODO: confirm! # https://www.irfanview.com/plugins.htm
-  # - jdk8 # https://www.oracle.com/technetwork/java/javase/downloads/
-  - lightshot # https://app.prntscr.com
-  - lockhunter # https://lockhunter.com/
-  - notepad3 # https://www.rizonesoft.com/introducing-notepad3/
-  - notepadplusplus # https://notepad-plus-plus.org/
-  # - rdtabs # https://www.avianwaves.com/Software/Tools/RD-Tabs
-  - reshack # http://www.angusj.com/resourcehacker/
-  - sysinternals # https://docs.microsoft.com/en-us/sysinternals/
-  # - slack # https://slack.com/
-  - sourcetree # https://www.sourcetreeapp.com/
-  - totalcommander # https://www.ghisler.com/
-  - tortoisegit # https://tortoisegit.org/
-  - treesizefree # https://www.jam-software.com/treesize_free/
-  - typescript # https://www.typescriptlang.org/
-  - wintail # http://www.baremetalsoft.com/wintail/
-  - 7zip # https://www.7-zip.org/
+    - audacity # https://www.audacityteam.org/
+    - azure-cli # https://docs.microsoft.com/en-us/cli/azure/what-is-azure-cli?view=azure-cli-latest
+    - azure-data-studio #
+    - azurestorageemulator
+    - brave # https://brave.com/
+    - chocolatey # https://chocolatey.org/
+    - cmder # https://cmder.net/
+    - dependencywalker # http://www.dependencywalker.com/
+    - doublecmd # https://sourceforge.net/projects/doublecmd/
+    - microsoft-edge # https://www.microsoft.com/en-us/edge
+    - microsoftazurestorageexplorer # previously azurestorageexplorer
+    - microsoft-windows-terminal # https://github.com/Microsoft/Terminal
+    - filezilla # https://filezilla-project.org/
+    - firefox # https://www.mozilla.org/en-US/firefox/new/
+    - git # https://git-scm.com/
+    - ilspy # https://github.com/icsharpcode/ILSpy
+    - irfanview # https://www.irfanview.com/
+    - irfanviewplugins # TODO: confirm! # https://www.irfanview.com/plugins.htm
+    # - jdk8 # https://www.oracle.com/technetwork/java/javase/downloads/
+    - lightshot # https://app.prntscr.com
+    - lockhunter # https://lockhunter.com/
+    - notepad3 # https://www.rizonesoft.com/introducing-notepad3/
+    - notepadplusplus # https://notepad-plus-plus.org/
+    - opera # https://www.opera.com/
+    - powershell-core # https://github.com/powershell/powershell
+    # - rdtabs # https://www.avianwaves.com/Software/Tools/RD-Tabs
+    - reshack # http://www.angusj.com/resourcehacker/
+    - sysinternals # https://docs.microsoft.com/en-us/sysinternals/
+    # - slack # https://slack.com/
+    # - sourcetree # https://www.sourcetreeapp.com/
+    - totalcommander # https://www.ghisler.com/
+    - tortoisegit # https://tortoisegit.org/
+    - treesizefree # https://www.jam-software.com/treesize_free/
+    # - typescript # https://www.typescriptlang.org/
+    - vlc # https://www.videolan.org/vlc/
+    - vivaldi # https://vivaldi.com/
+    - wintail # http://www.baremetalsoft.com/wintail/
+    - 7zip # https://www.7-zip.org/
   vscode: # https://code.visualstudio.com/
-  # https://chocolatey.org/packages?q=vscode
-  - vscode
-  - vscode-autofilename
-  - vscode-csharp
-  #- vscode-docker
-  - vscode-editorconfig
-  - vscode-icons
-  - vscode-markdownlint
-  - vscode-powershell
-  - vscode-yaml
+    # https://chocolatey.org/packages?q=vscode
+    - vscode
+    - vscode-autofilename
+    - vscode-csharp
+    #- vscode-docker
+    - vscode-editorconfig
+    - vscode-icons
+    - vscode-markdownlint
+    - vscode-powershell
+    - vscode-yaml
   # - vscode-tslint
 commands:
   - git config --global core.sshCommand 'c:/Windows/System32/OpenSSH/ssh.exe'
