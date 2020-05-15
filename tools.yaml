@@ -16,7 +16,7 @@ choco:
     - azurestorageemulator
     - brave # https://brave.com/
     - chocolatey # https://chocolatey.org/
-    - cmder # https://cmder.net/
+    # - cmder # https://cmder.net/
     - dependencywalker # http://www.dependencywalker.com/
     - doublecmd # https://sourceforge.net/projects/doublecmd/
     - microsoft-edge # https://www.microsoft.com/en-us/edge
