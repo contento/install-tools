@@ -25,6 +25,7 @@ choco:
     - microsoft-windows-terminal # https://github.com/Microsoft/Terminal
     - filezilla # https://filezilla-project.org/
     - firefox # https://www.mozilla.org/en-US/firefox/new/
+    # - golang # https://golang.org
     - git # https://git-scm.com/
     - ilspy # https://github.com/icsharpcode/ILSpy
     - irfanview # https://www.irfanview.com/
@@ -59,6 +60,7 @@ choco:
     - vscode-icons
     - vscode-markdownlint
     - vscode-powershell
+    - vscode-python
     - vscode-yaml
   # - vscode-tslint
 commands:
