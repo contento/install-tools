@@ -40,7 +40,7 @@ choco:
     # - rdtabs # https://www.avianwaves.com/Software/Tools/RD-Tabs
     - reshack # http://www.angusj.com/resourcehacker/
     - sysinternals # https://docs.microsoft.com/en-us/sysinternals/
-    - slack # https://slack.com/
+    # - slack # https://slack.com/
     # - sourcetree # https://www.sourcetreeapp.com/
     - totalcommander # https://www.ghisler.com/
     - tortoisegit # https://tortoisegit.org/
@@ -55,13 +55,13 @@ choco:
     - vscode
     - vscode-autofilename
     - vscode-csharp
-    #- vscode-docker
+    # - vscode-docker
     - vscode-editorconfig
     - vscode-icons
     - vscode-markdownlint
     - vscode-powershell
     - vscode-python
     - vscode-yaml
-  # - vscode-tslint
+    # - vscode-tslint
 commands:
   - git config --global core.sshCommand 'c:/Windows/System32/OpenSSH/ssh.exe'
