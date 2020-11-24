@@ -37,6 +37,7 @@ choco:
     - notepadplusplus # https://notepad-plus-plus.org/
     - opera # https://www.opera.com/
     - powershell-core # https://github.com/powershell/powershell
+    # - qbittorrent # https://www.qbittorrent.org/download.php
     - rdtabs # https://www.avianwaves.com/Software/Tools/RD-Tabs
     - reshack # http://www.angusj.com/resourcehacker/
     - sysinternals # https://docs.microsoft.com/en-us/sysinternals/
