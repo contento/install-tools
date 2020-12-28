@@ -18,7 +18,9 @@ choco:
     - brave # https://brave.com/
     - chocolatey # https://chocolatey.org/
     # - cmder # https://cmder.net/
+    # - carnac # http://code52.org/carnac/
     - dependencywalker # http://www.dependencywalker.com/
+    # - ditto # https://ditto-cp.sourceforge.io/
     - doublecmd # https://sourceforge.net/projects/doublecmd/
     - filezilla # https://filezilla-project.org/
     - firefox # https://www.mozilla.org/en-US/firefox/new/
